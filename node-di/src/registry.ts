@@ -2,6 +2,7 @@ import { Injector, ReflectiveInjector } from 'injection-js'
 import 'reflect-metadata'
 import { registryEntries, asyncRegistryEntries } from './registry.entries'
 
+
 export class Registry {
   private injector: Injector
 

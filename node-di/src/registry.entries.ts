@@ -1,24 +1,20 @@
-import { App } from './App'
-import { DefaultRedirectRoute } from './routes/default-redirect'
-import { NexusAccountUserApiService } from './services/NexusAccountUserApiService'
-import { AuthenticationApiService } from './services/AuthenticationApiService'
-import { DefaultRedirectService } from './services/DefaultRedirectService'
-import { BrandingApiService } from './services/BrandingApiService'
-import { HttpErrorMapping } from './middlewares/HttpErrorMapping'
+import { App } from "./App";
+import { HelloWorldRoute } from "./routes/hello-world";
+import { HelloService } from "./services/HelloService";
 
-const services = [
-  NexusAccountUserApiService,
-  AuthenticationApiService,
-  DefaultRedirectService,
-  BrandingApiService
-]
+const services = [HelloService];
 
-const routes = [ DefaultRedirectRoute ]
+const routes = [HelloWorldRoute];
 
-const repos = [ ]
+const repos = [];
 
-const middlewares = [ HttpErrorMapping ]
+const middlewares = [];
 
-export const asyncRegistryEntries = []
-
-export const registryEntries = [App, ...routes, ...services, ...repos, ...middlewares]
+export const asyncRegistryEntries = [];
+export const registryEntries = [
+  App,
+  ...routes,
+  ...services,
+  ...repos,
+  ...middlewares
+];
