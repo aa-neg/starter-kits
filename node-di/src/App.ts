@@ -10,6 +10,8 @@ import { SwaggerValidator } from './utils/SwaggerValidator';
 export class App {
   public express: express.Application
 
+  private router: express.Router = express.Router()
+
   constructor(
     private helloWorld: HelloWorldRoute,
     private swaggerValidator: SwaggerValidator
@@ -22,11 +24,9 @@ export class App {
   }
 
   private mountRoutes(): void {
-    this.express.use(
-      '/hello-world',
-      this.swaggerValidator.validator.validate,
-      this.helloWorld.router
-    )
+    this.router.get('/hello-world', this.swaggerValidator.validator.validate, this.helloWorld.greet)
+
+    this.express.use(this.router)
   }
 
   private setupExpressLogger(): void {

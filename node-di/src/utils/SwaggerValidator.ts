@@ -7,9 +7,11 @@ import 'reflect-metadata'
 export class SwaggerValidator {
   public initialized: Promise<any>
 
-  public validator = swaggerValidator.bind(this)
+  public validator = swaggerValidator
 
   constructor() {
+      console.log(path.join(__dirname, '../swagger.yaml'))
       this.initialized = swaggerValidator.init(path.join(__dirname, '../swagger.yaml'))
+      console.log('this initialized: ', this.initialized)
   }
 }

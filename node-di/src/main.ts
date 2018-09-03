@@ -2,12 +2,13 @@ import { App } from "./App";
 import registry from "./registry";
 // import config from "./config";
 
-const app = registry.getBean(App).express;
 // const port = config("PORT");
 const port = 3000
 
 Promise.all(registry.getAsyncBeans().map(bean => bean.initialized))
   .then(() => {
+    console.log('finished: ')
+    const app = registry.getBean(App).express;
     app.listen(port, err => {
       if (err) {
         return console.log(err);

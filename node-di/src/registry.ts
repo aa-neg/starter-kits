@@ -8,7 +8,8 @@ export class Registry {
 
   constructor() {
     this.injector = ReflectiveInjector.resolveAndCreate([
-      ...registryEntries
+      ...registryEntries,
+      ...asyncRegistryEntries
     ])
   }
 

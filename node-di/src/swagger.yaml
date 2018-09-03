@@ -1,0 +1,23 @@
+swagger: '2.0'
+info:
+  version: 0.0.1
+  title: example 
+  description: example node di 
+basePath: /
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /hello-world:
+    get:
+      summary: greet the world
+      responses:
+        '200':
+          description: OK
+
+definitions:
+  AnyValue:
+    description: Can be object or array

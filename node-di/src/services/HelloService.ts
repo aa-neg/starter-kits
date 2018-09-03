@@ -4,8 +4,7 @@ import "reflect-metadata";
 @Injectable()
 export class HelloService {
 
-  private async hello() {
-    console.log('hello')
+  public async hello() {
     return {
       message: 'hello'
     }

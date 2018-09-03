@@ -6,30 +6,20 @@ import "reflect-metadata";
 
 @Injectable()
 export class HelloWorldRoute {
-  public router = express.Router();
-
-  public baseRoute = "/hello-world";
-
   constructor(private helloService: HelloService) {
-    this.router.route(`${this.baseRoute}`).get(async (req, res) => {
+  }
+
+    public async greet(req, res) {
       try {
-        const result = await this.hello();
-        return res.send(200).send(result)
+        const result = await this.helloService.hello();
+        res.status(200).json(result);
       } catch (err) {
         if (err instanceof HttpError) {
-          return res.status(err.code).send(err.message);
+          return res.sendStatus(err.code).send(err.message);
         }
         return res
           .status(500)
           .send({ code: 500, message: `internal server error!` });
       }
-    });
-  }
-
-  private async hello() {
-    console.log('hello')
-    return {
-      message: 'hello'
     }
-  }
 }
